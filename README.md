@@ -6,26 +6,28 @@
   <b>A Linux high-performance transparent proxy solution based on eBPF.</b>
 </p>
 
+-----------
 
-## How to Build DAED for OpenWrt Firmware
 
-### Get Source
+## Build on OpenWrt official SnapShots
+
+### 1. Get Source
 
 ```bash
 git clone https://github.com/sbwml/luci-app-daed package/daed
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/daed/v2ray-geodata
 ```
 
-### Install clang-15, refer to https://apt.llvm.org
+### 2. Install clang-13, refer to https://apt.llvm.org
 
 ```bash
 apt-get update
-apt-get install -y clang-15
+apt-get install -y clang-13
 ```
 
-### Patch OpenWrt Source (Requirements for DAED to work)
+### 3. Change OpenWrt Source (Requirements for `DAED` to work)
 
-- Enable eBPF, add content to: `.config`
+- Enable eBPF support, add content to: `.config`
   ```
   CONFIG_DEVEL=y
   CONFIG_BPF_TOOLCHAIN_HOST=y
@@ -60,17 +62,16 @@ apt-get install -y clang-15
   ```bash
   # fix unmount hierarchical mount
   pushd feeds/packages
-      curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/master/openwrt/patch/cgroupfs-mount/0001-fix-cgroupfs-mount.patch | patch -p1
+      curl -s https://raw.githubusercontent.com/sbwml/luci-app-dae/main/.cgroupfs/cgroupfs-mount.init.patch | patch -p1
   popd
   # cgroupfs v2
   mkdir -p feeds/packages/utils/cgroupfs-mount/patches
-  curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/master/openwrt/patch/cgroupfs-mount/900-add-cgroupfs2.patch > feeds/packages/utils/cgroupfs-mount/patches/900-add-cgroupfs2.patch
+  curl -s https://raw.githubusercontent.com/sbwml/luci-app-dae/main/.cgroupfs/900-add-cgroupfs2.patch > feeds/packages/utils/cgroupfs-mount/patches/900-add-cgroupfs2.patch
   ```
 
-### Build luci-app-daed
+### 4. Build luci-app-daed
 
 ```bash
 make menuconfig # choose LUCI -> Applications -> luci-app-daed
 make package/daed/luci-app-daed/compile V=s # build luci-app-daed
 ```
-
