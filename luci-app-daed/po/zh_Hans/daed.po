@@ -10,6 +10,18 @@ msgstr "一个基于 eBPF 的 Linux 高性能透明代理解决方案"
 msgid "Enabled"
 msgstr "启用"
 
+msgid "Enable Logs"
+msgstr "启用日志"
+
+msgid "Logs"
+msgstr "日志"
+
+msgid "Clear logs"
+msgstr "清空日志"
+
+msgid "Basic Setting"
+msgstr "基本设置"
+
 msgid "RUNNING"
 msgstr "运行中"
 

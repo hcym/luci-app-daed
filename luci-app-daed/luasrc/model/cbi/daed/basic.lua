@@ -12,6 +12,10 @@ s.anonymous = true
 o = s:option(Flag, "enabled", translate("Enabled"))
 o.rmempty = false
 
+o = s:option(Flag, "log", translate("Enable Logs"))
+o.default = 0
+o.rmempty = false
+
 o = s:option(Value, "listen_addr",translate("Listen Address"))
 o.default = '0.0.0.0:2023'
 
