@@ -13,6 +13,9 @@ msgstr "启用"
 msgid "Enable Logs"
 msgstr "启用日志"
 
+msgid "Logfile Max Size (MB)"
+msgstr "日志文件大小（MB）"
+
 msgid "Logs"
 msgstr "日志"
 

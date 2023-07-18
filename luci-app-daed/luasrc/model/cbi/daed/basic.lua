@@ -16,6 +16,10 @@ o = s:option(Flag, "log", translate("Enable Logs"))
 o.default = 0
 o.rmempty = false
 
+o = s:option(Value, "logfile_maxsize", translate("Logfile Max Size (MB)"))
+o.default = 1
+o:depends("log", "1")
+
 o = s:option(Value, "listen_addr",translate("Listen Address"))
 o.default = '0.0.0.0:2023'
 
