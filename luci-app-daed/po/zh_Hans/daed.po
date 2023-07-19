@@ -39,3 +39,6 @@ msgstr "打开 Web 界面"
 
 msgid "Listen Address"
 msgstr "监听地址"
+
+msgid "The kernel does not support eBPF"
+msgstr "内核不支持 eBPF"

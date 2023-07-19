@@ -9,6 +9,11 @@ s = m:section(TypedSection, "daed")
 s.addremove = false
 s.anonymous = true
 
+if nixio.fs.stat("/sys/fs/bpf","type") ~= "dir" then
+	s.rawhtml = true
+	s.template = "daed/daed_error"
+end
+
 o = s:option(Flag, "enabled", translate("Enabled"))
 o.rmempty = false
 
