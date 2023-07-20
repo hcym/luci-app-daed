@@ -8,10 +8,9 @@ PKG_NAME:=daed
 PKG_VERSION:=0.2.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/daeuniverse/daed.git
-PKG_MIRROR_HASH:=154db624b859235e3d52afeadc034b06d62347757718029ce613eaf243835259
-PKG_SOURCE_VERSION:=v$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).zip
+PKG_SOURCE_URL:=https://github.com/daeuniverse/daed/releases/download/v$(PKG_VERSION)/daed-full-src.zip?
+PKG_HASH:=8cc5c901ba098ed0e47eaa2ed186de186af595e914baf59ffba6bba76c38214d
 
 PKG_LICENSE:=AGPL-3.0-only MIT
 PKG_LICENSE_FILES:=LICENSE wing/LICENSE
