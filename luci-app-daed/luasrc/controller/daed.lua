@@ -27,9 +27,9 @@ function act_status()
 end
 
 function get_log()
-	http.write(sys.exec("cat /var/log/daed.log"))
+	http.write(sys.exec("cat /var/log/daed/daed.log"))
 end
 
 function clear_log()
-	sys.call("true > /var/log/daed.log")
+	sys.call("true > /var/log/daed/daed.log")
 end

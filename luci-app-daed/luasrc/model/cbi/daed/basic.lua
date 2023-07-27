@@ -17,13 +17,17 @@ end
 o = s:option(Flag, "enabled", translate("Enabled"))
 o.rmempty = false
 
-o = s:option(Flag, "log", translate("Enable Logs"))
+o = s:option(Flag, "log_enabled", translate("Enable Logs"))
 o.default = 0
 o.rmempty = false
 
-o = s:option(Value, "logfile_maxsize", translate("Logfile Max Size (MB)"))
+o = s:option(Value, "log_maxbackups", translate("Logfile retention count"))
 o.default = 1
-o:depends("log", "1")
+o:depends("log_enabled", "1")
+
+o = s:option(Value, "log_maxsize", translate("Logfile Max Size (MB)"))
+o.default = 1
+o:depends("log_enabled", "1")
 
 o = s:option(Value, "listen_addr",translate("Listen Address"))
 o.default = '0.0.0.0:2023'
