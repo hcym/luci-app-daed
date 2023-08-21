@@ -1,6 +1,6 @@
 <h1 align="center">luci-app-daed</h1>
 <p align="center">
-  <img width="100" src="https://github.com/daeuniverse/daed/blob/main/public/logo.svg" />
+  <img width="100" src="https://user-images.githubusercontent.com/16485166/261898124-7193042f-e162-43dc-9dcf-db02e24e748d.png" />
 </p>
 <p align="center">
   <b>A Linux high-performance transparent proxy solution based on eBPF.</b>
@@ -8,8 +8,7 @@
 
 -----------
 
-
-## Build on OpenWrt official SnapShots
+## Build on OpenWrt Official 23.05/SNAPSHOT
 
 ### 1. Get Source
 
@@ -25,7 +24,7 @@ apt-get update
 apt-get install -y clang-13
 ```
 
-### 3. Change OpenWrt Source (Requirements for `DAED` to work)
+### 3. Compile Options (Requirements for `DAED` to work)
 
 - Enable eBPF support, add content to: `.config`
   ```
@@ -37,25 +36,7 @@ apt-get install -y clang-13
   CONFIG_KERNEL_DEBUG_INFO=y
   CONFIG_KERNEL_DEBUG_INFO_BTF=y
   # CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set
-  ```
-
-- Add `xdp-sockets-diag` kernel module, add content to: `package/kernel/linux/modules/netsupport.mk`
-  ```mk
-  define KernelPackage/xdp-sockets-diag
-    SUBMENU:=$(NETWORK_SUPPORT_MENU)
-    TITLE:=PF_XDP sockets monitoring interface support for ss utility
-    KCONFIG:= \
-  	CONFIG_XDP_SOCKETS=y \
-  	CONFIG_XDP_SOCKETS_DIAG
-    FILES:=$(LINUX_DIR)/net/xdp/xsk_diag.ko
-    AUTOLOAD:=$(call AutoLoad,31,xsk_diag)
-  endef
-  
-  define KernelPackage/xdp-sockets-diag/description
-   Support for PF_XDP sockets monitoring interface used by the ss tool
-  endef
-  
-  $(eval $(call KernelPackage,xdp-sockets-diag))
+  CONFIG_KERNEL_XDP_SOCKETS=y
   ```
 
 - Patch cgroupfs-mount: use cgroupfs2 (Required when docker is compiled.)
