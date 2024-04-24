@@ -39,17 +39,6 @@ apt-get install -y clang-13
   CONFIG_KERNEL_XDP_SOCKETS=y
   ```
 
-- Patch cgroupfs-mount: use cgroupfs2 (Required when docker is compiled.)
-  ```bash
-  # fix unmount hierarchical mount
-  pushd feeds/packages
-      curl -s https://raw.githubusercontent.com/sbwml/luci-app-dae/main/.cgroupfs/cgroupfs-mount.init.patch | patch -p1
-  popd
-  # cgroupfs v2
-  mkdir -p feeds/packages/utils/cgroupfs-mount/patches
-  curl -s https://raw.githubusercontent.com/sbwml/luci-app-dae/main/.cgroupfs/900-add-cgroupfs2.patch > feeds/packages/utils/cgroupfs-mount/patches/900-add-cgroupfs2.patch
-  ```
-
 ### 4. Build luci-app-daed
 
 ```bash
