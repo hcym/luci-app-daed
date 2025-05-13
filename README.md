@@ -8,7 +8,7 @@
 
 -----------
 
-## Build on OpenWrt Official 23.05/SNAPSHOT
+## Build 大鹅 on OpenWrt Official 23.05/SNAPSHOT
 
 ### 1. Get Source
 
